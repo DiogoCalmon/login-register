@@ -5,24 +5,24 @@ function App() {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
   // const [count, setCount] = useState(0)
-  function handSubmit(event : React.FormEvent<HTMLFormElement>){
+  async function handSubmit(event : React.FormEvent<HTMLFormElement>){
     event.preventDefault();
     const form = {
       login: login,
       senha: senha
     };
 
-    const resposta = fetch("http://localhost:3000/lib/api_registro.php", {
+    const resposta = await fetch("http://127.0.0.1:3000/teste.php", {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(form)
+      body: JSON.stringify({teste: "dados"})
     })
-    
-    
 
-    return
+    const dados = await resposta.json();
+    console.log("Dados recebidos:", dados);
+    alert(JSON.stringify(dados, null, 2));
   }
 
   return (
