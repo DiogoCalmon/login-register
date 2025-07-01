@@ -12,12 +12,12 @@ function App() {
       senha: senha
     };
 
-    const resposta = await fetch("http://127.0.0.1:3000/teste.php", {
+    const resposta = await fetch("http://localhost:3000/login-registro/src/lib/api_registro.php", {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify({teste: "dados"})
+      body: JSON.stringify(form)
     })
 
     const dados = await resposta.json();
