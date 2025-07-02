@@ -4,15 +4,17 @@ import './registro.css'
 function App() {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
   // const [count, setCount] = useState(0)
   async function handSubmit(event : React.FormEvent<HTMLFormElement>){
     event.preventDefault();
     const form = {
       login: login,
-      senha: senha
+      senha: senha,
+      confirmarSenha: confirmarSenha
     };
 
-    const resposta = await fetch("http://localhost:3000/login-registro/src/lib/api_registro.php", {
+    const resposta = await fetch("http://localhost:3000/login-registro/src/controllers/api_registro.php", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -21,7 +23,6 @@ function App() {
     })
 
     const dados = await resposta.json();
-    console.log("Dados recebidos:", dados);
     alert(JSON.stringify(dados, null, 2));
   }
 
@@ -30,8 +31,9 @@ function App() {
       <div className='flex justify-center h-screen items-center bg-zinc-900'>
         <form onSubmit={(event) => handSubmit(event)} action="" method="post" className=' w-2xl rounded-2xl p-8 flex flex-col items-center gap-2'>
           <h1 className='text-zinc-200 text-2xl font-bold'>Registro</h1>
-          <input id='login' onChange={(e) => setLogin(e.target.value)} placeholder='login' type="text" className='bg-zinc-700 rounded text-center text-neutral-50 w-90' />
-          <input id='senha' onChange={(e) => setSenha(e.target.value)} placeholder='senha' type="password" className='bg-zinc-700 rounded text-center text-neutral-50 w-90' />
+          <input id='login' onChange={(e) => setLogin(e.target.value)} placeholder='Login' type="text" className='bg-zinc-700 rounded text-center text-neutral-50 w-90' />
+          <input id='senha' onChange={(e) => setSenha(e.target.value)} placeholder='Senha' type="password" className='bg-zinc-700 rounded text-center text-neutral-50 w-90' />
+          <input id='senha' onChange={(e) => setConfirmarSenha(e.target.value)} placeholder='Confirmar senha' type="password" className='bg-zinc-700 rounded text-center text-neutral-50 w-90' />
           <button className='bg-blue-700 rounded text-neutral-100 w-90' type='submit'>Enviar</button>
         </form>
       </div>
