@@ -14,7 +14,8 @@
 
     $resposta = [
         "oi" => "ola",
-        "tres" => true
+        "tres" => true,
+        "teste" => "é o brad"
     ];
 
     echo json_encode($resposta);
