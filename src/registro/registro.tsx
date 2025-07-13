@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './registro.css'
-
+import { Link } from "react-router-dom"
 import Input from "../components/input";
 import Botao from "../components/botao"
 
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-center h-screen items-center bg-zinc-900'>
+      <div className='flex h-screen flex-col justify-center items-center bg-zinc-900'>
         <form onSubmit={(event) => handSubmit(event)} action="" method="post" className=' w-2xl rounded-2xl p-8 flex flex-col items-center gap-2'>
           <h1 className='text-zinc-200 text-2xl font-bold'>Registro</h1>
           <Input id={"login"} onChange={setLogin} placeholder='Login' type='text'/>
@@ -40,6 +40,7 @@ function App() {
           <Input id={"confirmarSenha"} onChange={setConfirmarSenha} placeholder='Confirmar senha' type='password'/>
           <Botao />
         </form>
+        <Link to="/login" className="text-blue-600">Já tem uma conta? Logue</Link>
       </div>
     </>
   )
