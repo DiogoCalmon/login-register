@@ -40,7 +40,7 @@ function App() {
           <Input id={"confirmarSenha"} onChange={setConfirmarSenha} placeholder='Confirmar senha' type='password'/>
           <Botao />
         </form>
-        <Link to="/login" className="text-blue-600">Já tem uma conta? Logue</Link>
+        <Link to="/login" className="text-blue-700">Já tem uma conta? Logue</Link>
       </div>
     </>
   )
